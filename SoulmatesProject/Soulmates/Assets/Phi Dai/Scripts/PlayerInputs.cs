@@ -11,6 +11,7 @@ public class PlayerInputs : MonoBehaviour
 
     public float playerSpeed;
     public float tugSpeed;
+    public float tugTimeLengthToRelease;
 
     float p1_horizontal;
     float p1_vertical;
@@ -109,11 +110,11 @@ public class PlayerInputs : MonoBehaviour
         if (    (p1_horizontal != 0 || p1_vertical != 0 && p2_horizontal != 0 || p2_vertical != 0 )     && distanceBetween >= 14f)
         {
             //Debug.Log("Force pulling activated!");
-            if (pull_threshold >= 0 && pull_threshold <= 2f)
+            if (pull_threshold >= 0 && pull_threshold <= tugTimeLengthToRelease)
                 pull_threshold += 2f * Time.deltaTime;
         }
 
-        if (pull_threshold >= 2f)
+        if (pull_threshold >= tugTimeLengthToRelease)
             tug = true;
 
         if(tug && player1Input == Vector3.zero && player2Input == Vector3.zero)
@@ -123,7 +124,7 @@ public class PlayerInputs : MonoBehaviour
 
             if (p1.transform.position != midpointTarget && p2.transform.position != midpointTarget && tug)
             {
-                currentLeapTime += Time.deltaTime * tugSpeed;
+                currentLeapTime += Time.deltaTime * tugSpeed; // tugSpeed can be increased overtime from 0 - tugSpeed the longer the player holds the tug
                 if (currentLeapTime > 1)
                 {
                     currentLeapTime = 1;
@@ -142,7 +143,7 @@ public class PlayerInputs : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "Environment")
         {
-            // we stop moving into the midpoint
+            // we stop moving into the midpoint (maybe)
             if(tug)
                 tug = false;
         }
@@ -152,9 +153,10 @@ public class PlayerInputs : MonoBehaviour
             // we break the object ONLY if the tug is happening
             Debug.Log("Destroyed object: " + collision.gameObject);
             if (tug)
-                collision.gameObject.SetActive(false);
+            {
+                collision.gameObject.SetActive(false); // try something else if time 
+                tug = false;
+            }
         }
-
-
     }
 }
