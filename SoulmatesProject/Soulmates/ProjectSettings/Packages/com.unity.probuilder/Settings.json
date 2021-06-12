@@ -24,6 +24,7 @@
             },
             {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
                 "type": "UnityEngine.ProBuilder.RectSelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "editor.dragSelectRectMode",
@@ -40,6 +41,9 @@
                 "value": "{\"m_Value\":1}"
             },
             {
+=======
+=======
+>>>>>>> Stashed changes
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
