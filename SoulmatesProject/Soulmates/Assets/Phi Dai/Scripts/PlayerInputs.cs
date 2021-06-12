@@ -10,11 +10,14 @@ public class PlayerInputs : MonoBehaviour
     public bool player_2;
 
     public float playerSpeed;
+    public float tugSpeed;
 
     float p1_horizontal;
     float p1_vertical;
     float p2_horizontal;
     float p2_vertical;
+    Vector3 player1Input;
+    Vector3 player2Input;
 
     Vector3 midpoint;
     float distanceBetween;
@@ -41,13 +44,15 @@ public class PlayerInputs : MonoBehaviour
         //Debug.Log("The midpoint of the players are: " + midpoint);
         Debug.Log("The distance between the two players are: " + distanceBetween);
         Debug.Log("Pull threshold amount: " + pull_threshold);
+        //Debug.Log("Are we tugging: " + tug);
+       
     }
 
     void Player1_Inputs()
     {
         p1_horizontal = Input.GetAxis("Horizontal_P1"); 
         p1_vertical = Input.GetAxis("Vertical_P1");
-        Vector3 player1Input = new Vector3(p1_horizontal, 0, p1_vertical);
+        player1Input = new Vector3(p1_horizontal, 0, p1_vertical);
 
         if (p1_horizontal == 0 && p1_vertical == 0)
         {
@@ -55,7 +60,7 @@ public class PlayerInputs : MonoBehaviour
             pull_threshold = 0.0f;
         }
 
-        if(distanceBetween <= 15f)
+        if(distanceBetween <= 15f && player1Input != Vector3.zero)
             rb.MovePosition(p1.transform.position + player1Input * Time.deltaTime * playerSpeed);
         else if (distanceBetween > 15f)
         {
@@ -70,7 +75,7 @@ public class PlayerInputs : MonoBehaviour
     {
         p2_horizontal = Input.GetAxis("Horizontal_P2"); 
         p2_vertical = Input.GetAxis("Vertical_P2");
-        Vector3 player2Input = new Vector3(p2_horizontal, 0, p2_vertical);
+        player2Input = new Vector3(p2_horizontal, 0, p2_vertical);
 
         if (p2_horizontal == 0 && p2_vertical == 0)
         {
@@ -78,7 +83,7 @@ public class PlayerInputs : MonoBehaviour
             pull_threshold = 0.0f;
         }
 
-        if (distanceBetween <= 15f)
+        if (distanceBetween <= 15f && player2Input != Vector3.zero)
             rb.MovePosition(p2.transform.position + player2Input * Time.deltaTime * playerSpeed);
         else if (distanceBetween > 15f)
         {
@@ -101,18 +106,55 @@ public class PlayerInputs : MonoBehaviour
 
     void CalculatePullThreshold()
     {
-
-
-        if ( (p1_horizontal != 0 || p1_vertical != 0 && p2_horizontal != 0 || p2_vertical != 0) && distanceBetween >= 15f - 0.5f)
+        if (    (p1_horizontal != 0 || p1_vertical != 0 && p2_horizontal != 0 || p2_vertical != 0 )     && distanceBetween >= 14f)
         {
-            Debug.Log("Force pulling activated!");
-            if(pull_threshold >= 0 && pull_threshold < 2f)
-            pull_threshold += 2f * Time.deltaTime;            
+            //Debug.Log("Force pulling activated!");
+            if (pull_threshold >= 0 && pull_threshold <= 2f)
+                pull_threshold += 2f * Time.deltaTime;
         }
 
         if (pull_threshold >= 2f)
             tug = true;
 
-        
+        if(tug && player1Input == Vector3.zero && player2Input == Vector3.zero)
+        {
+            float currentLeapTime = 0f;
+            Vector3 midpointTarget = midpoint;
+
+            if (p1.transform.position != midpointTarget && p2.transform.position != midpointTarget && tug)
+            {
+                currentLeapTime += Time.deltaTime * tugSpeed;
+                if (currentLeapTime > 1)
+                {
+                    currentLeapTime = 1;
+                    tug = false;
+                }
+                float percentComplete = currentLeapTime / 1;
+                p1.GetComponent<Rigidbody>().MovePosition(Vector3.Lerp(p1.transform.position, midpointTarget, percentComplete));
+                p2.GetComponent<Rigidbody>().MovePosition(Vector3.Lerp(p2.transform.position, midpointTarget, percentComplete));
+            }
+            else if (p1.transform.position == midpointTarget && p2.transform.position == midpointTarget)
+                tug = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "Environment")
+        {
+            // we stop moving into the midpoint
+            if(tug)
+                tug = false;
+        }
+
+        if(collision.gameObject.tag == "Breakable")
+        {
+            // we break the object ONLY if the tug is happening
+            Debug.Log("Destroyed object: " + collision.gameObject);
+            if (tug)
+                collision.gameObject.SetActive(false);
+        }
+
+
     }
 }
