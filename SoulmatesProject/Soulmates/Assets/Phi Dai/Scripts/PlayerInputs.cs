@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInputs : MonoBehaviour
 {
-    Rigidbody rb;
+    Rigidbody p1_rb;
+    Rigidbody p2_rb;
 
-    public bool player_1;
-    public bool player_2;
 
     public float playerSpeed;
     public float tugSpeed;
@@ -23,9 +22,11 @@ public class PlayerInputs : MonoBehaviour
     Vector3 player2Input;
 
     Vector3 midpoint;
+    Vector3 tempMidpoint;
     float distanceBetween;
     float pull_threshold;
     bool tug = false;
+    bool movingToTarget = false;
 
     public GameObject p1;
     public GameObject p2;
@@ -35,31 +36,34 @@ public class PlayerInputs : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        p1_rb = p1.GetComponent<Rigidbody>();
+        p2_rb = p2.GetComponent<Rigidbody>();
         startPosition = transform.position;
     }
 
     void FixedUpdate()
     {
-        if(player_1)
-            Player1_Inputs();
-        if (player_2)
-            Player2_Inputs();
+        Player1_Inputs();
+        Player2_Inputs();
 
         CalculateMidPoint();
         CalculatePullThreshold();
         //Debug.Log("The midpoint of the players are: " + midpoint);
-        Debug.Log("The distance between the two players are: " + distanceBetween);
+        //Debug.Log("The distance between the two players are: " + distanceBetween);
         Debug.Log("Pull threshold amount: " + pull_threshold);
-        //Debug.Log("Are we tugging: " + tug);
-
+        Debug.Log("Are we tugging: " + tug);
+        //Debug.Log("Player1 movement: " + player1Input);
+        //Debug.Log("Player2 movement: " + player2Input);
+        //Debug.Log("Moving to midpoint: " + movingToTarget);
+        //Debug.Log("Player1 position: " + p1.transform.position);
+        //Debug.Log("Midpoint: " + tempMidpoint);
         Debugs();
-       
+
     }
 
     void Player1_Inputs()
     {
-        p1_horizontal = Input.GetAxis("Horizontal_P1"); 
+        p1_horizontal = Input.GetAxis("Horizontal_P1");
         p1_vertical = Input.GetAxis("Vertical_P1");
         player1Input = new Vector3(p1_horizontal, 0, p1_vertical);
 
@@ -69,20 +73,20 @@ public class PlayerInputs : MonoBehaviour
             pull_threshold = 0.0f;
         }
 
-        if(distanceBetween <= 6f && player1Input != Vector3.zero)
-            rb.MovePosition(p1.transform.position + player1Input * Time.deltaTime * playerSpeed);
-        else if (distanceBetween > 6f)
+        if (distanceBetween <= ropeDistance && player1Input != Vector3.zero)
+            p1_rb.MovePosition(p1.transform.position + player1Input * Time.deltaTime * playerSpeed);
+        else if (distanceBetween > ropeDistance)
         {
             Vector3 revertPosition = midpoint - p1.transform.position;
             revertPosition = revertPosition.normalized;
-            revertPosition *= (distanceBetween - 6);
+            revertPosition *= (distanceBetween - ropeDistance);
             p1.transform.position += revertPosition;
         }
     }
 
     void Player2_Inputs()
     {
-        p2_horizontal = Input.GetAxis("Horizontal_P2"); 
+        p2_horizontal = Input.GetAxis("Horizontal_P2");
         p2_vertical = Input.GetAxis("Vertical_P2");
         player2Input = new Vector3(p2_horizontal, 0, p2_vertical);
 
@@ -92,19 +96,19 @@ public class PlayerInputs : MonoBehaviour
             pull_threshold = 0.0f;
         }
 
-        if (distanceBetween <= 6f && player2Input != Vector3.zero)
-            rb.MovePosition(p2.transform.position + player2Input * Time.deltaTime * playerSpeed);
-        else if (distanceBetween > 6f)
+        if (distanceBetween <= ropeDistance && player2Input != Vector3.zero)
+            p2_rb.MovePosition(p2.transform.position + player2Input * Time.deltaTime * playerSpeed);
+        else if (distanceBetween > ropeDistance)
         {
             Vector3 revertPosition = midpoint - p2.transform.position;
             revertPosition = revertPosition.normalized;
-            revertPosition *= (distanceBetween - 6f);
+            revertPosition *= (distanceBetween - ropeDistance);
             p2.transform.position += revertPosition;
         }
     }
 
     void CalculateMidPoint()
-    {       
+    {
         midpoint.x = p1.transform.position.x + (p2.transform.position.x - p1.transform.position.x) / 2;
         midpoint.y = p1.transform.position.y + (p2.transform.position.y - p1.transform.position.y) / 2;
         midpoint.z = p1.transform.position.z + (p2.transform.position.z - p1.transform.position.z) / 2;
@@ -115,20 +119,27 @@ public class PlayerInputs : MonoBehaviour
 
     void CalculatePullThreshold()
     {
-        if (    (p1_horizontal != 0 || p1_vertical != 0 && p2_horizontal != 0 || p2_vertical != 0 )     && distanceBetween >=  6f)
+        if (   (player1Input != Vector3.zero && player2Input != Vector3.zero) && distanceBetween >= ropeDistance - 0.5f)
         {
-            //Debug.Log("Force pulling activated!");
-            if (pull_threshold >= 0 && pull_threshold <= tugTimeLengthToRelease)
+
+            if (pull_threshold >= 0 && pull_threshold <= tugTimeLengthToRelease && !tug)
+            {
+                Debug.Log("Force pulling activated!");
                 pull_threshold += 2f * Time.deltaTime;
+            }
         }
 
         if (pull_threshold >= tugTimeLengthToRelease)
+        {
             tug = true;
+            CheckMidPoint();
+        }
 
-        if(tug && player1Input == Vector3.zero && player2Input == Vector3.zero)
+        if (tug && player1Input == Vector3.zero && player2Input == Vector3.zero)
         {
             float currentLeapTime = 0f;
-            Vector3 midpointTarget = midpoint;
+            Vector3 midpointTarget = tempMidpoint;
+            pull_threshold = 0.0f;
 
             if (p1.transform.position != midpointTarget && p2.transform.position != midpointTarget && tug)
             {
@@ -136,47 +147,60 @@ public class PlayerInputs : MonoBehaviour
                 if (currentLeapTime > 1)
                 {
                     currentLeapTime = 1;
-                    tug = false;
+                    tug = false;                    
                 }
+                movingToTarget = true;
                 float percentComplete = currentLeapTime / 1;
                 p1.GetComponent<Rigidbody>().MovePosition(Vector3.Lerp(p1.transform.position, midpointTarget, percentComplete));
                 p2.GetComponent<Rigidbody>().MovePosition(Vector3.Lerp(p2.transform.position, midpointTarget, percentComplete));
             }
             else if (p1.transform.position == midpointTarget && p2.transform.position == midpointTarget)
-                tug = false;
+            {
+                tug = false;                
+            }
         }
+    }
+
+    void CheckMidPoint()
+    {
+        tempMidpoint.x = p1.transform.position.x + (p2.transform.position.x - p1.transform.position.x) / 2;
+        tempMidpoint.y = p1.transform.position.y + (p2.transform.position.y - p1.transform.position.y) / 2;
+        tempMidpoint.z = p1.transform.position.z + (p2.transform.position.z - p1.transform.position.z) / 2;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "Environment")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Environment")
         {
             // we stop moving into the midpoint (maybe)
-            if(tug)
+            if (tug)
+            {
                 tug = false;
+                pull_threshold = 0.0f;
+            }
         }
 
         if (collision.gameObject.tag == "Breakable")
         {
             // we break the object ONLY if the tug is happening
-            Debug.Log("Destroyed object: " + collision.gameObject);
-            if (tug)
+            //Debug.Log("Destroyed object: " + collision.gameObject);
+            if (movingToTarget)
             {
-                collision.gameObject.SetActive(false); // try something else if time 
                 tug = false;
+                movingToTarget = false;
+                pull_threshold = 0.0f;
+                collision.gameObject.SetActive(false); // try something else if time 
+               
             }
         }
 
-        if(collision.gameObject.tag == "Respawn")
+        if (collision.gameObject.tag == "Respawn")
         {
-            
             p1.transform.position = respawnPoint.transform.position;
             p2.transform.position = respawnPoint.transform.position;
-
-
         }
 
-        
+
     }
 
 
@@ -187,6 +211,6 @@ public class PlayerInputs : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-    
+
     }
 }

@@ -5,15 +5,15 @@ using UnityEngine;
 public class SpawnLevelGrid : MonoBehaviour
 {
     public GameObject[] objectsToPickFrom;
-    int objIndex = 0;
+    //int objIndex = 0;
     public GameObject[] groundFloor;
     public GameObject playerObject;
     public static Vector3 playerStartPositionRef;
     Vector3 playerSpawnPosition;
 
 
-    GameObject[] tempStoredObjects = new GameObject[5];
-    int tempIndex = 0;
+    //GameObject[] tempStoredObjects = new GameObject[5];
+    //int tempIndex = 0;
     public int gridX;
     public int gridZ;
 
@@ -46,7 +46,8 @@ public class SpawnLevelGrid : MonoBehaviour
             for (int z = 0; z < gridZ; z++)
             {
                 Vector3 spawnPosition = new Vector3(x * gridSpaceingOffset, 0, z * gridSpaceingOffset) + gridOrigin;
-                PickAndSpawnGrid(spawnPosition, Quaternion.identity, true);   
+                //if (x != gridX / 2 && z != gridZ / 2)
+                    PickAndSpawnGrid(spawnPosition, Quaternion.identity, true);   
                 
             }
         }
@@ -59,7 +60,8 @@ public class SpawnLevelGrid : MonoBehaviour
             for (int z = 1; z < gridZ - 1; z++)
             {
                 Vector3 spawnPosition = new Vector3(x * gridSpaceingOffset, 0f, z * gridSpaceingOffset) + gridOrigin;
-                PickAndSpawnGrid(spawnPosition, Quaternion.identity,false);
+                if(x != gridX/2 && z != gridZ/2)
+                    PickAndSpawnGrid(spawnPosition, Quaternion.identity,false);
             }
         }
 

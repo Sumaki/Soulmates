@@ -7,6 +7,8 @@ public class Liner : MonoBehaviour {
 
 public GameObject OtherGameObject;
 LineRenderer line;
+Vector3 position;
+Vector3 otherPosition;
 
 
 public float RopeWidth=0.5f;
@@ -25,15 +27,24 @@ public float RopeWidth=0.5f;
 
 		line.positionCount = 2;
 
-		line.SetPosition(0,gameObject.transform.position);
+        position = gameObject.transform.position;
+        position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.5f, gameObject.transform.position.z);
+
+        otherPosition = OtherGameObject.transform.position;
+        otherPosition = new Vector3(OtherGameObject.transform.position.x, OtherGameObject.transform.position.y + 0.5f, OtherGameObject.transform.position.z);
+
+
+        line.SetPosition(0,position);
 		line.SetPosition(1,OtherGameObject.transform.position);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		line.SetPosition(0,gameObject.transform.position);
-		line.SetPosition(1,OtherGameObject.transform.position);
+        position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.5f, gameObject.transform.position.z);
+        otherPosition = new Vector3(OtherGameObject.transform.position.x, OtherGameObject.transform.position.y + 0.5f, OtherGameObject.transform.position.z);
+        line.SetPosition(0,position);
+		line.SetPosition(1,otherPosition);
 		
 	}
 }
