@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Gaby/Level01.unity
+    guid: bceb0cadec6365b48b0929e475c41564
+  - enabled: 1
+    path: Assets/Gaby/Level02.unity
+    guid: 30ae7d0117062984b851aedeaf71a8f8
+  - enabled: 1
+    path: Assets/Gaby/Level03.unity
+    guid: b0cf9a734076a594c84f08fe906e5fdd
+  - enabled: 1
+    path: Assets/Phi Dai/Scenes/InfiniteLevel.unity
+    guid: 5ae171cb05ff1d442a74adece199ea71
   m_configObjects: {}

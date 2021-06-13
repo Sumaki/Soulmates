@@ -35,7 +35,7 @@ public class SpawnLevelGrid : MonoBehaviour
     {
         SpawnGrid();
         SpawnObjects();
-        SpawnPlayer();
+       // SpawnPlayer();
         playerStartPositionRef = playerSpawnPosition;
     }
 
@@ -55,9 +55,9 @@ public class SpawnLevelGrid : MonoBehaviour
 
     void SpawnObjects()
     {
-        for (int x = 1; x < gridX - 1; x++)
+        for (int x = 0; x < gridX; x++)
         {
-            for (int z = 1; z < gridZ - 1; z++)
+            for (int z = 0; z < gridZ; z++)
             {
                 Vector3 spawnPosition = new Vector3(x * gridSpaceingOffset, 0f, z * gridSpaceingOffset) + gridOrigin;
                 if(x != gridX/2 && z != gridZ/2)
