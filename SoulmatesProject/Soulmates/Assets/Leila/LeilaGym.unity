@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-153960
+  m_Name: pb_Mesh-170382
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -486,10 +486,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1109757795, guid: 1d519987ea458d945a4f69f85c395302, type: 3}
-      propertyPath: LightsModule.light
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 160389207664340877, guid: 1d519987ea458d945a4f69f85c395302, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -500,7 +496,7 @@ PrefabInstance:
       objectReference: {fileID: 336540068}
     - target: {fileID: 334011762235981240, guid: 1d519987ea458d945a4f69f85c395302, type: 3}
       propertyPath: m_VersionIndex
-      value: 1974
+      value: 1986
       objectReference: {fileID: 0}
     - target: {fileID: 2539390735735683022, guid: 1d519987ea458d945a4f69f85c395302, type: 3}
       propertyPath: m_RootOrder
