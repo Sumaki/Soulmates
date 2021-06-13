@@ -33,6 +33,7 @@ public class PlayerInputs : MonoBehaviour
     public GameObject respawnPoint;
     public AudioSource breakObj;
     public AudioSource launch;
+    public AudioSource charge;
 
     Vector3 startPosition;
 
@@ -52,13 +53,14 @@ public class PlayerInputs : MonoBehaviour
         CalculatePullThreshold();
         //Debug.Log("The midpoint of the players are: " + midpoint);
         //Debug.Log("The distance between the two players are: " + distanceBetween);
-        Debug.Log("Pull threshold amount: " + pull_threshold);
-        Debug.Log("Are we tugging: " + tug);
+        //Debug.Log("Pull threshold amount: " + pull_threshold);
+        //Debug.Log("Are we tugging: " + tug);
         //Debug.Log("Player1 movement: " + player1Input);
         //Debug.Log("Player2 movement: " + player2Input);
         //Debug.Log("Moving to midpoint: " + movingToTarget);
         //Debug.Log("Player1 position: " + p1.transform.position);
         //Debug.Log("Midpoint: " + tempMidpoint);
+        //Debug.Log("movetotarget: " + movingToTarget);
         Debugs();
 
     }
@@ -72,7 +74,7 @@ public class PlayerInputs : MonoBehaviour
         if (p1_horizontal == 0 && p1_vertical == 0)
         {
             player1Input = Vector3.zero;
-            pull_threshold = 0.0f;
+            //pull_threshold = 0.0f;
         }
 
         if (distanceBetween <= ropeDistance && player1Input != Vector3.zero)
@@ -95,7 +97,7 @@ public class PlayerInputs : MonoBehaviour
         if (p2_horizontal == 0 && p2_vertical == 0)
         {
             player2Input = Vector3.zero;
-            pull_threshold = 0.0f;
+            //pull_threshold = 0.0f;
         }
 
         if (distanceBetween <= ropeDistance && player2Input != Vector3.zero)
@@ -133,6 +135,8 @@ public class PlayerInputs : MonoBehaviour
 
         if (pull_threshold >= tugTimeLengthToRelease)
         {
+           if(!charge.isPlaying)
+            charge.Play();
             tug = true;
             CheckMidPoint();
         }
@@ -141,26 +145,29 @@ public class PlayerInputs : MonoBehaviour
         {
             if(!launch.isPlaying)
              launch.Play();
+            charge.Stop();
             float currentLeapTime = 0f;
             Vector3 midpointTarget = tempMidpoint;
             pull_threshold = 0.0f;
 
             if (p1.transform.position != midpointTarget && p2.transform.position != midpointTarget && tug)
             {
+                movingToTarget = true;
                 currentLeapTime += Time.deltaTime * tugSpeed; // tugSpeed can be increased overtime from 0 - tugSpeed the longer the player holds the tug
                 if (currentLeapTime > 1)
                 {
                     currentLeapTime = 1;
                     tug = false;                    
                 }
-                movingToTarget = true;
+                
                 float percentComplete = currentLeapTime / 1;
                 p1.GetComponent<Rigidbody>().MovePosition(Vector3.Lerp(p1.transform.position, midpointTarget, percentComplete));
                 p2.GetComponent<Rigidbody>().MovePosition(Vector3.Lerp(p2.transform.position, midpointTarget, percentComplete));
             }
             else if (p1.transform.position == midpointTarget && p2.transform.position == midpointTarget)
             {
-                tug = false;                
+                tug = false;
+                movingToTarget = false;
             }
         }
     }
@@ -180,6 +187,7 @@ public class PlayerInputs : MonoBehaviour
             if (tug)
             {
                 tug = false;
+                movingToTarget = false;
                 pull_threshold = 0.0f;
             }
         }
@@ -193,7 +201,7 @@ public class PlayerInputs : MonoBehaviour
                 //tug = false;
                 breakObj.Play();
                 movingToTarget = false;
-                pull_threshold = 0.0f;
+                //pull_threshold = 0.0f;
                 SetGameObjectVariables(collision.gameObject); 
                
             }
