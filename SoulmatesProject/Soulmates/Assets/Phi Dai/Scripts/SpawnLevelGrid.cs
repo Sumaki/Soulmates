@@ -83,7 +83,7 @@ public class SpawnLevelGrid : MonoBehaviour
 
             }
 
-            if ( (objectsToPickFrom[randomIndex].name == "Tombstone_03" || objectsToPickFrom[randomIndex].name == "Pillar") && unbreakableTombstoneCounter < unbreakableTombstoneLimit)
+            if ( (objectsToPickFrom[randomIndex].name == "Tombstone_03" || objectsToPickFrom[randomIndex].name == "Pillar" || objectsToPickFrom[randomIndex].name == "Fire") && unbreakableTombstoneCounter < unbreakableTombstoneLimit)
             {
                 unbreakableTombstoneCounter++;
                 levelClone = Instantiate(objectsToPickFrom[randomIndex], positionToSpawn, rotationToSpawn);

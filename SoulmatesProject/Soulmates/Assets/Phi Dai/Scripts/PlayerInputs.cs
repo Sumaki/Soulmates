@@ -127,7 +127,7 @@ public class PlayerInputs : MonoBehaviour
             if (pull_threshold >= 0 && pull_threshold <= tugTimeLengthToRelease && !tug)
             {
                 Debug.Log("Force pulling activated!");
-                pull_threshold += 2f * Time.deltaTime;
+                pull_threshold += 5f * Time.deltaTime;
             }
         }
 
