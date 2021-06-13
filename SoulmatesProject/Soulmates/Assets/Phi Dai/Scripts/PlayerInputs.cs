@@ -27,6 +27,7 @@ public class PlayerInputs : MonoBehaviour
     float pull_threshold;
     bool tug = false;
     bool movingToTarget = false;
+    bool canMove = true;
 
     public GameObject p1;
     public GameObject p2;
@@ -54,7 +55,7 @@ public class PlayerInputs : MonoBehaviour
         //Debug.Log("The midpoint of the players are: " + midpoint);
         //Debug.Log("The distance between the two players are: " + distanceBetween);
         //Debug.Log("Pull threshold amount: " + pull_threshold);
-        //Debug.Log("Are we tugging: " + tug);
+        Debug.Log("Are we tugging: " + tug);
         //Debug.Log("Player1 movement: " + player1Input);
         //Debug.Log("Player2 movement: " + player2Input);
         //Debug.Log("Moving to midpoint: " + movingToTarget);
@@ -94,13 +95,13 @@ public class PlayerInputs : MonoBehaviour
         p2_vertical = Input.GetAxis("Vertical_P2");
         player2Input = new Vector3(p2_horizontal, 0, p2_vertical);
 
-        if (p2_horizontal == 0 && p2_vertical == 0)
+        if (p2_horizontal == 0 && p2_vertical == 0 )
         {
             player2Input = Vector3.zero;
             //pull_threshold = 0.0f;
         }
 
-        if (distanceBetween <= ropeDistance && player2Input != Vector3.zero)
+        if (distanceBetween <= ropeDistance && player2Input != Vector3.zero )
             p2_rb.MovePosition(p2.transform.position + player2Input * Time.deltaTime * playerSpeed);
         else if (distanceBetween > ropeDistance)
         {
