@@ -29,9 +29,12 @@ public class PlayerInputs : MonoBehaviour
     public GameObject p1;
     public GameObject p2;
 
+    Vector3 startPosition;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        startPosition = transform.position;
     }
 
     void FixedUpdate()
@@ -64,13 +67,13 @@ public class PlayerInputs : MonoBehaviour
             pull_threshold = 0.0f;
         }
 
-        if(distanceBetween <= 15f && player1Input != Vector3.zero)
+        if(distanceBetween <= 6f && player1Input != Vector3.zero)
             rb.MovePosition(p1.transform.position + player1Input * Time.deltaTime * playerSpeed);
-        else if (distanceBetween > 15f)
+        else if (distanceBetween > 6f)
         {
             Vector3 revertPosition = midpoint - p1.transform.position;
             revertPosition = revertPosition.normalized;
-            revertPosition *= (distanceBetween - 15);
+            revertPosition *= (distanceBetween - 6);
             p1.transform.position += revertPosition;
         }
     }
@@ -87,13 +90,13 @@ public class PlayerInputs : MonoBehaviour
             pull_threshold = 0.0f;
         }
 
-        if (distanceBetween <= 15f && player2Input != Vector3.zero)
+        if (distanceBetween <= 6f && player2Input != Vector3.zero)
             rb.MovePosition(p2.transform.position + player2Input * Time.deltaTime * playerSpeed);
-        else if (distanceBetween > 15f)
+        else if (distanceBetween > 6f)
         {
             Vector3 revertPosition = midpoint - p2.transform.position;
             revertPosition = revertPosition.normalized;
-            revertPosition *= (distanceBetween - 15);
+            revertPosition *= (distanceBetween - 6f);
             p2.transform.position += revertPosition;
         }
     }
@@ -110,7 +113,7 @@ public class PlayerInputs : MonoBehaviour
 
     void CalculatePullThreshold()
     {
-        if (    (p1_horizontal != 0 || p1_vertical != 0 && p2_horizontal != 0 || p2_vertical != 0 )     && distanceBetween >= 14f)
+        if (    (p1_horizontal != 0 || p1_vertical != 0 && p2_horizontal != 0 || p2_vertical != 0 )     && distanceBetween >=  6f)
         {
             //Debug.Log("Force pulling activated!");
             if (pull_threshold >= 0 && pull_threshold <= tugTimeLengthToRelease)
@@ -151,7 +154,7 @@ public class PlayerInputs : MonoBehaviour
                 tug = false;
         }
 
-        if(collision.gameObject.tag == "Breakable")
+        if (collision.gameObject.tag == "Breakable")
         {
             // we break the object ONLY if the tug is happening
             Debug.Log("Destroyed object: " + collision.gameObject);
@@ -161,6 +164,17 @@ public class PlayerInputs : MonoBehaviour
                 tug = false;
             }
         }
+
+        if(collision.gameObject.tag == "Respawn")
+        {
+            rb.isKinematic = true;
+            transform.position = SpawnLevelGrid.playerStartPositionRef;
+           //rb.isKinematic = false;
+            rb.velocity = Vector3.zero;
+
+        }
+
+        
     }
 
 
