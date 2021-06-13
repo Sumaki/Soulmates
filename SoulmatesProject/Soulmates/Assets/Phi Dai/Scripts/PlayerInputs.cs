@@ -120,7 +120,7 @@ public class PlayerInputs : MonoBehaviour
 
     void CalculatePullThreshold()
     {
-        if (   (player1Input != Vector3.zero && player2Input != Vector3.zero) && distanceBetween >= ropeDistance - 0.5f)
+        if (   (player1Input != Vector3.zero && player2Input != Vector3.zero) && distanceBetween >= ropeDistance)
         {
 
             if (pull_threshold >= 0 && pull_threshold <= tugTimeLengthToRelease && !tug)
