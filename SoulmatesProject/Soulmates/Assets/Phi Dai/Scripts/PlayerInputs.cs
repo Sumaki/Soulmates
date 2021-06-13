@@ -31,7 +31,8 @@ public class PlayerInputs : MonoBehaviour
     public GameObject p1;
     public GameObject p2;
     public GameObject respawnPoint;
-    public AudioSource audio;
+    public AudioSource breakObj;
+    public AudioSource launch;
 
     Vector3 startPosition;
 
@@ -138,6 +139,8 @@ public class PlayerInputs : MonoBehaviour
 
         if (tug && player1Input == Vector3.zero && player2Input == Vector3.zero)
         {
+            if(!launch.isPlaying)
+             launch.Play();
             float currentLeapTime = 0f;
             Vector3 midpointTarget = tempMidpoint;
             pull_threshold = 0.0f;
@@ -187,7 +190,8 @@ public class PlayerInputs : MonoBehaviour
             //Debug.Log("Destroyed object: " + collision.gameObject);
             if (movingToTarget)
             {
-                tug = false;
+                //tug = false;
+                breakObj.Play();
                 movingToTarget = false;
                 pull_threshold = 0.0f;
                 SetGameObjectVariables(collision.gameObject); 
@@ -219,6 +223,11 @@ public class PlayerInputs : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SceneManager.LoadScene("InfiniteLevel");
         }
 
     }
