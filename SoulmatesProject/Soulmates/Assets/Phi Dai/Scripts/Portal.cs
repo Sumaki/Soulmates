@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-   
+    public static bool nextLevel;
 }

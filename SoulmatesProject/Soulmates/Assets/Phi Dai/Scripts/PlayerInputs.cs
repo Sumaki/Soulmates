@@ -28,6 +28,7 @@ public class PlayerInputs : MonoBehaviour
 
     public GameObject p1;
     public GameObject p2;
+    public GameObject respawnPoint;
 
     Vector3 startPosition;
 
@@ -167,10 +168,10 @@ public class PlayerInputs : MonoBehaviour
 
         if(collision.gameObject.tag == "Respawn")
         {
-            rb.isKinematic = true;
-            transform.position = SpawnLevelGrid.playerStartPositionRef;
-           //rb.isKinematic = false;
-            rb.velocity = Vector3.zero;
+            
+            p1.transform.position = respawnPoint.transform.position;
+            p2.transform.position = respawnPoint.transform.position;
+
 
         }
 

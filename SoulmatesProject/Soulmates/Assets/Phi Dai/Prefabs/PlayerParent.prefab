@@ -120,6 +120,7 @@ MonoBehaviour:
   tugTimeLengthToRelease: 1
   p1: {fileID: 1446568790209976460}
   p2: {fileID: 1446568790605209121}
+  respawnPoint: {fileID: 5548588864714308144, guid: 428efb9e1a18dee46abf335f8f8a1d94, type: 3}
 --- !u!54 &1446568790209976454
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -367,6 +368,7 @@ MonoBehaviour:
   tugTimeLengthToRelease: 1
   p1: {fileID: 1446568790209976460}
   p2: {fileID: 1446568790605209121}
+  respawnPoint: {fileID: 5548588864714308144, guid: 428efb9e1a18dee46abf335f8f8a1d94, type: 3}
 --- !u!54 &1446568790605209115
 Rigidbody:
   m_ObjectHideFlags: 0
