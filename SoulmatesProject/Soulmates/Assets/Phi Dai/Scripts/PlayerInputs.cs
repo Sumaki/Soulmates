@@ -13,6 +13,7 @@ public class PlayerInputs : MonoBehaviour
     public float playerSpeed;
     public float tugSpeed;
     public float tugTimeLengthToRelease;
+    public float ropeDistance;
 
     float p1_horizontal;
     float p1_vertical;
