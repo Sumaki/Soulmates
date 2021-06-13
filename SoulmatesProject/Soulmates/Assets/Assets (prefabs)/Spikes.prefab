@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 6091692057091964025}
   - component: {fileID: 7144347504103388124}
   - component: {fileID: 4954282271874418454}
+  - component: {fileID: 677284928729228818}
   m_Layer: 0
   m_Name: Spikes
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &677284928729228818
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6900034741126866627}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.95952064, y: 0.19811133, z: 0.9595207}
+  m_Center: {x: 0, y: 0.09755646, z: -0.000000014901161}
 --- !u!1 &7516695140313187156
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,9 +109,10 @@ GameObject:
   - component: {fileID: 9105885065038069842}
   - component: {fileID: 7759283271447327624}
   - component: {fileID: 7516695140313187154}
+  - component: {fileID: 6548512569314921575}
   m_Layer: 0
   m_Name: Spikes_move
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,3 +200,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &6548512569314921575
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7516695140313187156}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.77229404, y: 0.30852655, z: 0.76540637}
+  m_Center: {x: -0.000000029802322, y: 0.26587385, z: -0.000000029802322}
