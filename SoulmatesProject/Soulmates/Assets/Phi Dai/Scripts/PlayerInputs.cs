@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerInputs : MonoBehaviour
 {
@@ -46,6 +47,8 @@ public class PlayerInputs : MonoBehaviour
         Debug.Log("The distance between the two players are: " + distanceBetween);
         Debug.Log("Pull threshold amount: " + pull_threshold);
         //Debug.Log("Are we tugging: " + tug);
+
+        Debugs();
        
     }
 
@@ -158,5 +161,16 @@ public class PlayerInputs : MonoBehaviour
                 tug = false;
             }
         }
+    }
+
+
+    void Debugs()
+    {
+        //reload scene to test randomizer
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    
     }
 }
