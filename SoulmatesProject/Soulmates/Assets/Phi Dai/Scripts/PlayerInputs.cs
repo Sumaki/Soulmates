@@ -189,7 +189,7 @@ public class PlayerInputs : MonoBehaviour
                 tug = false;
                 movingToTarget = false;
                 pull_threshold = 0.0f;
-                collision.gameObject.SetActive(false); // try something else if time 
+                SetGameObjectVariables(collision.gameObject); 
                
             }
         }
@@ -201,6 +201,14 @@ public class PlayerInputs : MonoBehaviour
         }
 
 
+    }
+
+    void SetGameObjectVariables(GameObject obj)
+    {
+        obj.GetComponent<BoxCollider>().enabled = false;
+        obj.GetComponent<Rigidbody>().isKinematic = true;
+        obj.GetComponent<MeshRenderer>().enabled = false;
+        obj.GetComponent<PlayObjectParticle>().playParticle = true;
     }
 
 
