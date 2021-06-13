@@ -131,7 +131,7 @@ Material:
     m_Colors:
     - AmbientColor: {r: 0.6226415, g: 0.490477, b: 0.490477, a: 0}
     - MainColor: {r: 1, g: 1, b: 1, a: 0}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.9632427, g: 0.6179246, b: 1, a: 1}
     - _BaseColorAddSubDiff: {r: -1, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

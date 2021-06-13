@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4365062381457323808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4365062381457323810}
+  - component: {fileID: 4365062381457323809}
+  m_Layer: 0
+  m_Name: GridSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4365062381457323810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4365062381457323808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4365062381457323809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4365062381457323808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3105e162dabdf4e862d193d0b1781e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToPickFrom:
+  - {fileID: 575944679519194188, guid: b7250dd0463647845b8e2bab1b1ab6cc, type: 3}
+  - {fileID: 8890965412185016120, guid: 1d7479d4b598c734db3526d0044174a1, type: 3}
+  - {fileID: 150774851334862819, guid: 0d871aea413da0242bb61178ecd816e9, type: 3}
+  - {fileID: 4895935115311663430, guid: 3050004402a510a48b5ba99d9baa99ff, type: 3}
+  - {fileID: 7312772078516056246, guid: e5d780f84ca5b0e40a5e3f6db96e3cf3, type: 3}
+  - {fileID: 2711404663514429783, guid: dff46cc82d7cac84a874ad9e4eaa25a3, type: 3}
+  - {fileID: 2711404663514429783, guid: dff46cc82d7cac84a874ad9e4eaa25a3, type: 3}
+  - {fileID: 2711404663514429783, guid: dff46cc82d7cac84a874ad9e4eaa25a3, type: 3}
+  - {fileID: 2711404663514429783, guid: dff46cc82d7cac84a874ad9e4eaa25a3, type: 3}
+  - {fileID: 2711404663514429783, guid: dff46cc82d7cac84a874ad9e4eaa25a3, type: 3}
+  groundFloor:
+  - {fileID: 5149086783495176323, guid: 97b58064a5af98d41af47230387fdb02, type: 3}
+  - {fileID: 6691547062706563327, guid: ad67405e1bb1c194389d5969df91b852, type: 3}
+  - {fileID: 7011440460188017339, guid: 9389b3c87588b6a438999088056596cd, type: 3}
+  - {fileID: 5149086783495176323, guid: 97b58064a5af98d41af47230387fdb02, type: 3}
+  - {fileID: 6691547062706563327, guid: ad67405e1bb1c194389d5969df91b852, type: 3}
+  - {fileID: 5149086783495176323, guid: 97b58064a5af98d41af47230387fdb02, type: 3}
+  - {fileID: 6691547062706563327, guid: ad67405e1bb1c194389d5969df91b852, type: 3}
+  playerObject: {fileID: 1446568791957930188, guid: 5383e5392c900fc4f8a723f5a7caf645, type: 3}
+  gridX: 14
+  gridZ: 14
+  holesLimit: 30
+  unbreakableTombstoneLimit: 30
+  breakableTombstoneLimit: 30
+  spikeLimit: 25
+  portalLimit: 1
+  gridSpaceingOffset: 1
+  gridOrigin: {x: 0, y: 0, z: 0}
