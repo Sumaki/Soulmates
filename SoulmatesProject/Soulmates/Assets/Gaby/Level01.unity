@@ -1944,6 +1944,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2678787210108715828, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678787210108715828, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678787210108715828, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4343233189462957238, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
       propertyPath: m_Name
       value: Fence_01
@@ -2363,14 +2375,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2372156392658425287, guid: 751e74f51cf24f7479863337c88448b4, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2372156393212130512, guid: 751e74f51cf24f7479863337c88448b4, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 751e74f51cf24f7479863337c88448b4, type: 3}
 --- !u!82 &190138012 stripped
@@ -2381,6 +2385,11 @@ AudioSource:
 --- !u!82 &190138013 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 2372156393212130512, guid: 751e74f51cf24f7479863337c88448b4, type: 3}
+  m_PrefabInstance: {fileID: 190138011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &190138014 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1125209245, guid: 751e74f51cf24f7479863337c88448b4, type: 3}
   m_PrefabInstance: {fileID: 190138011}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &192825137
@@ -3348,6 +3357,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2678787210108715828, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678787210108715828, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678787210108715828, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4343233189462957238, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
       propertyPath: m_Name
       value: Fence_01
@@ -3404,6 +3425,18 @@ PrefabInstance:
     - target: {fileID: 2239514360645628808, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678787210108715828, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678787210108715828, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678787210108715828, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4343233189462957238, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
       propertyPath: m_Name
@@ -11195,6 +11228,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2678787210108715828, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678787210108715828, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678787210108715828, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4343233189462957238, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
       propertyPath: m_Name
       value: Fence_01
@@ -15004,6 +15049,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2678787210108715828, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678787210108715828, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678787210108715828, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4343233189462957238, guid: c9ef8ab6a0ad4a84ca13fb625c20d016, type: 3}
       propertyPath: m_Name
       value: Fence_01
@@ -17922,6 +17979,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2634773936587091981, guid: ca9d6e5b582ca6b499fb72b56835db78, type: 3}
+      propertyPath: charge
+      value: 
+      objectReference: {fileID: 190138014}
+    - target: {fileID: 2634773936587091981, guid: ca9d6e5b582ca6b499fb72b56835db78, type: 3}
       propertyPath: launch
       value: 
       objectReference: {fileID: 190138012}
@@ -17985,6 +18046,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Parent
       objectReference: {fileID: 0}
+    - target: {fileID: 7358974068995452621, guid: ca9d6e5b582ca6b499fb72b56835db78, type: 3}
+      propertyPath: charge
+      value: 
+      objectReference: {fileID: 190138014}
     - target: {fileID: 7358974068995452621, guid: ca9d6e5b582ca6b499fb72b56835db78, type: 3}
       propertyPath: launch
       value: 
