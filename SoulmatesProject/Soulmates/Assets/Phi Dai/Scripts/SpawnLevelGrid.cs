@@ -97,7 +97,7 @@ public class SpawnLevelGrid : MonoBehaviour
 
             }
 
-            if (objectsToPickFrom[randomIndex].name == "Portal" && spawnPortals < portalLimit)
+            if (objectsToPickFrom[randomIndex].name == "Exit" && spawnPortals < portalLimit)
             {
                 spawnPortals++;
                 levelClone = Instantiate(objectsToPickFrom[randomIndex], positionToSpawn, rotationToSpawn);

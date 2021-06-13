@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 2634773936587091981}
   m_Layer: 0
   m_Name: Ghost 02
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,10 +225,11 @@ MonoBehaviour:
   playerSpeed: 5
   tugSpeed: 5
   tugTimeLengthToRelease: 1
-  ropeDistance: 0
+  ropeDistance: 8
   p1: {fileID: 7358974068995452658}
   p2: {fileID: 2634773936587092019}
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 5548588864714308144, guid: 428efb9e1a18dee46abf335f8f8a1d94, type: 3}
+  audio: {fileID: 0}
 --- !u!1 &2634773937496503156
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,7 +444,7 @@ GameObject:
   - component: {fileID: 7358974068995452622}
   m_Layer: 0
   m_Name: Ghost 01
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -543,10 +544,11 @@ MonoBehaviour:
   playerSpeed: 5
   tugSpeed: 5
   tugTimeLengthToRelease: 1
-  ropeDistance: 0
+  ropeDistance: 8
   p1: {fileID: 7358974068995452658}
   p2: {fileID: 2634773936587092019}
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 5548588864714308144, guid: 428efb9e1a18dee46abf335f8f8a1d94, type: 3}
+  audio: {fileID: 0}
 --- !u!54 &7358974068995452620
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -675,7 +677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OtherGameObject: {fileID: 2634773936587092019}
-  RopeWidth: 0.5
+  RopeWidth: 0.2
 --- !u!1 &7926866401808346431
 GameObject:
   m_ObjectHideFlags: 0

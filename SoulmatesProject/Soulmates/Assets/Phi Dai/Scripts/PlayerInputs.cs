@@ -31,6 +31,7 @@ public class PlayerInputs : MonoBehaviour
     public GameObject p1;
     public GameObject p2;
     public GameObject respawnPoint;
+    public AudioSource audio;
 
     Vector3 startPosition;
 
