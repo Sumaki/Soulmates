@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Floor_Brick_mat
-  m_Shader: {fileID: -6465566751694194690, guid: 0b9bf7fe16d86f342a47ce116104a4db, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: c5f3878befb2d45428b2ed39db553267, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -113,6 +113,7 @@ Material:
     m_Colors:
     - AmbientColor: {r: 0.6226415, g: 0.490477, b: 0.490477, a: 0}
     - MainColor: {r: 1, g: 1, b: 1, a: 0}
+    - Shadow: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
